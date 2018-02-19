@@ -23,6 +23,9 @@ public class BodyPartQuiz {
 	String secondImage = "src/leonardo.jpeg";
 	String thirdImage = "src/morgan.jpeg";
 	String fourthImage = "src/jack.jpeg";
+	String[] celebs = new String[] {
+			"Arnold","Leonardo", "Morgan","Jack"
+	};
 	
 	JFrame window = new JFrame();
 	JPanel panel = new JPanel();
@@ -31,15 +34,22 @@ public class BodyPartQuiz {
 	private void startQuiz() {
 
 		// 1. Make an int variable to hold the score.
-
+int score = 0;
 		// 2. Set the size of the window in the initializeGui() method below
 
 		for (int i = 0; i < 4; i++) {
-			
+		
 			// 4. Ask the user who this person is and store their answer
 			String guess= JOptionPane.showInputDialog("who is this?");
 			
 			// 5. Check their answer. If they guessed correctly:
+			if (guess.equals(celebs[i])) {
+				score += 1;
+				JOptionPane.showMessageDialog(null, "You are correct! Your score is " + score);
+			}else {
+				score += 0;
+				JOptionPane.showMessageDialog(null, "You are wrong! That is " + celebs [i] + " Your score is "+ score);
+			}
 			// -- Tell them they are right and increase the score by 1
 
 			// 6. Otherwise:
@@ -75,7 +85,7 @@ public class BodyPartQuiz {
 		window.add(panel);
 		
 		// 3. Change the size of the window so that you can only see part of the image.		
-		window.setSize(500,500);
+		window.setSize(100,175);
 		
 		showNextImage();
 		
